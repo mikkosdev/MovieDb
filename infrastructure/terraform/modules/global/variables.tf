@@ -1,11 +1,6 @@
-variable "project_name" {
-  type        = string
-  description = "Name of the application"
-}
-
 variable "resource_group_name" {
   type        = string
-  description = "Name of the Resource Group in which to create the Cosmos DB."
+  description = "Name of the Resource Group in which to create the global resources."
 }
 
 variable "environment" {

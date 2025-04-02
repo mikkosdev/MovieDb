@@ -26,9 +26,12 @@ locals {
   short_env = lookup(local.environment_mapping, var.environment, "unknown")
 }
 
-# Main resource group
-module "main" {
-  source = "./modules/main"
+# Global resource group
+# (pending)
+
+# Application resource group
+module "app" {
+  source = "./modules/app"
 
   project_name        = var.project_name
   resource_group_name = var.resource_group_name
@@ -39,7 +42,7 @@ module "main" {
 
 # Database resource group
 module "database" {
-  source = "./modules/database"
+  source = "./modules/db"
 
   # Common
   resource_group_name = var.resource_group_name_db

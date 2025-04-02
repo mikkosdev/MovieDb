@@ -2,7 +2,7 @@
 
 variable "resource_group_name" {
   type        = string
-  description = "Name of the Resource Group in which to create the Cosmos DB."
+  description = "Name of the Resource Group in which to create the database resources."
 }
 
 variable "environment" {
