@@ -11,7 +11,7 @@ resource "azurerm_cosmosdb_account" "this" {
   resource_group_name = var.resource_group_name
   offer_type          = var.cosmos_db_offer_type
   kind                = var.cosmos_db_kind
-  enable_free_tier    = var.enable_free_tier
+  free_tier_enabled   = var.enable_free_tier
 
   consistency_policy {
     consistency_level = var.account_consistency_level
@@ -42,7 +42,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
   database_name       = azurerm_cosmosdb_sql_database.this.name
 
   # Partition key path
-  partition_key_path = "/id"
+  partition_key_paths = ["/id"]
 
   throughput = var.throughput
 }
