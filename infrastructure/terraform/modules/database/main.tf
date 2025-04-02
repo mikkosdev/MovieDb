@@ -1,17 +1,3 @@
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source  = "hashicorp/azurerm"
-#       version = "~> 3.0"
-#     }
-#   }
-#   required_version = ">= 1.0"
-# }
-
-# provider "azurerm" {
-#   features {}
-# }
-
 # Resource Group (Optional: only if you want to create it within this module)
 resource "azurerm_resource_group" "this" {
   name     = var.resource_group_name
@@ -55,7 +41,7 @@ resource "azurerm_cosmosdb_sql_container" "this" {
   account_name        = azurerm_cosmosdb_account.this.name
   database_name       = azurerm_cosmosdb_sql_database.this.name
 
-  # Example partition key path
+  # Partition key path
   partition_key_path = "/id"
 
   throughput = var.throughput

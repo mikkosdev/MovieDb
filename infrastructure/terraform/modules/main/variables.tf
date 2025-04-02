@@ -16,6 +16,10 @@ variable "location" {
   type = string
 }
 
+variable "location_short" {
+  type = string
+}
+
 variable "tags" {
   description = "Tags to set on the resources."
   type        = map(string)

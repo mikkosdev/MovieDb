@@ -17,6 +17,10 @@ variable "location" {
   type = string
 }
 
+variable "location_short" {
+  type = string
+}
+
 variable "cosmos_account_name" {
   type        = string
   description = "Name of the Cosmos DB Account."

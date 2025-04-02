@@ -14,6 +14,18 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  environment_mapping = {
+    development = "dev"
+    testing     = "test"
+    staging     = "stag"
+    production  = "prod"
+  }
+
+  # Get the shortened environment name
+  short_env = lookup(local.environment_mapping, var.environment, "unknown")
+}
+
 # Main resource group
 module "main" {
   source = "./modules/main"
@@ -22,6 +34,7 @@ module "main" {
   resource_group_name = var.resource_group_name
   environment         = var.environment
   location            = var.location
+  location_short      = var.location_short
 }
 
 # Database resource group
@@ -32,6 +45,7 @@ module "database" {
   resource_group_name = var.resource_group_name_db
   environment         = var.environment
   location            = var.location
+  location_short      = var.location_short
 
   # Cosmos DB specific
   cosmos_account_name  = var.cosmos_account_name

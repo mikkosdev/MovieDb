@@ -1,19 +1,3 @@
-# Configure the Azure provider
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source  = "hashicorp/azurerm"
-#       version = "~> 3.0.2"
-#     }
-#   }
-
-#   required_version = ">= 1.1.0"
-# }
-
-# provider "azurerm" {
-#   features {}
-# }
-
 # Resource Group
 resource "azurerm_resource_group" "rg" {
   tags     = var.tags
@@ -28,4 +12,13 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.0.0/16"]
   location            = "northeurope"
   resource_group_name = azurerm_resource_group.rg.name
+}
+
+# Azure Container Registry
+resource "azurerm_container_registry" "acr" {
+  name                = format("acr%s%s%s", var.project_name, var.environment, var.location)
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  sku                 = "Basic"
+  admin_enabled       = true
 }
