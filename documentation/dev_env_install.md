@@ -3,7 +3,17 @@
 - Git
 - Docker Desktop
 - Azure Cosmos DB Emulator
+
+    - Get the 'NoSQL' variant
+
 - Visual Studio Community 2022
+
+    - Check the following workloads:
+
+        - ASP.NET and web development
+        - Azure development
+        - Node.js development
+
 - Visual Studio Code
 
     - Plugins:
@@ -25,6 +35,10 @@
 
     `Set-ExecutionPolicy unrestricted`
 
+- Set new subscription selection off:
+
+    `az config set core.login_experience_v2=off`
+    
 - Login to Azure:
 
     `az login`
@@ -35,7 +49,7 @@
 
 - Initialize Terraform under /infrastructure/terraform:
 
-    `terraform init'
+    `terraform init`
 
 - Create a Service Principal for Terraform:
 
