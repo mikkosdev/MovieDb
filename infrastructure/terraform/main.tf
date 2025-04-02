@@ -14,23 +14,27 @@ provider "azurerm" {
   features {}
 }
 
-# Resource Group
-resource "azurerm_resource_group" "rg" {
-  tags = {
-    environment = "development"
-  }
-  name     = var.resource_group_name
-  location = "northeurope"
+# Main resource group
+module "main" {
+  source = "./modules/main"
+
+  project_name        = var.project_name
+  resource_group_name = var.resource_group_name
+  environment         = var.environment
+  location            = var.location
 }
 
-# Virtual Network
-resource "azurerm_virtual_network" "vnet" {
-  name                = var.virtual_network_name
-  address_space       = ["10.0.0.0/16"]
-  location            = "northeurope"
-  resource_group_name = azurerm_resource_group.rg.name
+# Database resource group
+module "database" {
+  source = "./modules/database"
+
+  # Common
+  resource_group_name = var.resource_group_name_db
+  environment         = var.environment
+  location            = var.location
+
+  # Cosmos DB specific
+  cosmos_account_name  = var.cosmos_account_name
+  nosql_database_name  = var.nosql_database_name
+  nosql_container_name = var.nosql_container_name
 }
-
-# Azure Kubernetes Service (AKS)
-
-# Azure Cosmos DB for NoSQL
