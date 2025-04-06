@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.MapGet("/", () => "Hello, world!");
 app.MapDefaultEndpoints();
 
 app.UseDefaultFiles();

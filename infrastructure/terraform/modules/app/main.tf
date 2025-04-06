@@ -28,8 +28,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   tags = var.tags
 
   name                = format("aks-%s-%s-%s", var.project_name, var.environment, var.location_short)
-  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
   dns_prefix          = "myaks"
 
   # System node pool - must have more than 2 cores.
