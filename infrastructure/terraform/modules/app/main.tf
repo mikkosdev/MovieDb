@@ -32,6 +32,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location            = azurerm_resource_group.rg.location
   dns_prefix          = "myaks"
   sku_tier            = "Free"
+  http_application_routing_enabled = true
 
   default_node_pool {
     name       = "default"

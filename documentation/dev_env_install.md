@@ -45,6 +45,20 @@
 
 - Copy subscription values from previous command to `set_env.ps1` under /infrastructure
 
+# AKS specific
+
+- Add HTTP Application Routing add-on:
+
+    `az aks enable-addons --resource-group $RESOURCEGROUP --name $CLUSTERNAME --addons http_application_routing`
+
+- Create ingress:
+
+    `kubectl apply -f ./ingress.yaml`
+
+- Check DNS Zone:
+
+    `az network dns zone list --output table`
+
 # Terraform Specific
 
 - Initialize Terraform under /infrastructure/terraform:
@@ -54,3 +68,4 @@
 - Create a Service Principal for Terraform:
 
     `az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<SUBSCRIPTION_ID_HERE>"`
+

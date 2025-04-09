@@ -2,6 +2,9 @@ param (
     [string]$environment
 )
 
+# Set environment variables
+. .\set_env.ps1
+
 # Check if the environment parameter is provided
 if (-not $environment) {
     Write-Host "Please provide an environment argument (e.g., development, production)."
