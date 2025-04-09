@@ -13,7 +13,7 @@ spec:
         app: moviedbserver
     spec:
       containers:
-        - image: acrmoviedbdevne.azurecr.io/moviedbserver # Add your ACR login server from step 3 here
+        - image: acrmoviedbdevne.azurecr.io/moviedbserver:latest # Add your ACR login server from step 3 here
           name: moviedbserver
           ports:
             - containerPort: 8080

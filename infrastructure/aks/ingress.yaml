@@ -7,13 +7,13 @@ metadata:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: moviedb.myaks-8plwe4zr.hcp.northeurope.azmk8s.io
+  - host: moviedb.fd3aa0ead8b7482883d4.northeurope.aksapp.io
     http:
       paths:
       - path: / # Which path is this rule referring to
         pathType: Prefix
         backend: # How the ingress will handle the requests
           service:
-            name: moviedb # Which service the request will be forwarded to
+            name: moviedbserver # Which service the request will be forwarded to
             port: 
               name: http # Which port in that service

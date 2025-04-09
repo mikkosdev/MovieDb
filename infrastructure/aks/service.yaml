@@ -11,4 +11,4 @@ spec:
     - port: 80 # SERVICE exposed port
       name: http # SERVICE port name
       protocol: TCP # The protocol the SERVICE will listen to
-      targetPort: 8080
+      targetPort: 8080  # Container exposed port
