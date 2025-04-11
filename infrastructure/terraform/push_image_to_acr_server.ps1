@@ -1,3 +1,5 @@
+Write-Output "(Make sure you have Docker Desktop running.)"
+
 $acr_registry_name = "acrmoviedbdevne"
 $image_name = "moviedbserver:latest"
 
