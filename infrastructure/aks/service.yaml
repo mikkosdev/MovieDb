@@ -2,13 +2,25 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: moviedbclient
+spec:
+  type: ClusterIP # Expose externally
+  selector:
+    app: moviedbclient
+  ports:
+    - protocol: TCP
+      port: 80 # Exposed service port
+      targetPort: 80 # Container port inside the frontend container
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: moviedbserver
 spec:
   type: ClusterIP
   selector:
     app: moviedbserver
   ports:
-    - port: 80 # SERVICE exposed port
-      name: http # SERVICE port name
-      protocol: TCP # The protocol the SERVICE will listen to
-      targetPort: 8080  # Container exposed port
+    - protocol: TCP # The protocol the SERVICE will listen to
+      port: 8080 # SERVICE exposed port
+      targetPort: 8080 # Container exposed port

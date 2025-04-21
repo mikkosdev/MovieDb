@@ -1,1 +1,3 @@
-kubectl apply -f ..\aks\deployment.yaml
+# Apply all manifest files
+
+kubectl apply -f ..\aks\.

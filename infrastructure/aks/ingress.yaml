@@ -1,19 +1,17 @@
-# ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: moviedb
-  annotations:
-    kubernetes.io/ingress.class: addon-http-application-routing
+  name: moviedb-ingress
 spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
   rules:
-  - host: moviedb.fd3aa0ead8b7482883d4.northeurope.aksapp.io
-    http:
-      paths:
-      - path: / # Which path is this rule referring to
-        pathType: Prefix
-        backend: # How the ingress will handle the requests
-          service:
-            name: moviedbserver # Which service the request will be forwarded to
-            port: 
-              name: http # Which port in that service
+    - host: moviedb.fd3aa0ead8b7482883d4.northeurope.aksapp.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: moviedbclient
+                port:
+                  number: 80

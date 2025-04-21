@@ -2,14 +2,14 @@ param (
     [string]$environment
 )
 
-# Set environment variables
-. .\set_env.ps1
-
 # Check if the environment parameter is provided
 if (-not $environment) {
     Write-Host "Please provide an environment argument (e.g., development, production)."
     exit 1
 }
+
+# Set environment variables
+. .\set_env.ps1
 
 # Construct the tfvars file name using string interpolation
 $tfvarsFile = "${environment}.tfvars"

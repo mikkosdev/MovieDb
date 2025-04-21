@@ -1,0 +1,11 @@
+helm upgrade --install external-dns bitnami/external-dns `
+  --namespace app-routing-system `
+  --set provider=azure `
+  --set azure.resourceGroup=$env:ARM_RESOURCE_GROUP `
+  --set azure.tenantId=$env:ARM_TENANT_ID `
+  --set azure.subscriptionId=$env:ARM_SUBSCRIPTION_ID `
+  --set azure.userAssignedIdentityClientID=$env:ARM_CLIENT_ID `
+  --set azure.useManagedIdentityExtension=true `
+  --set logLevel=info `
+  --set domainFilters[0]=northeurope.aksapp.io `
+  --set txtOwnerId=external-dns

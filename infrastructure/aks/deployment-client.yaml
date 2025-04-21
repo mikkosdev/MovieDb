@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moviedbclient
+  labels:
+    app: moviedbclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moviedbclient
+  template:
+    metadata:
+      labels:
+        app: moviedbclient
+    spec:
+      containers:
+        - name: client
+          image: acrmoviedbdevne.azurecr.io/moviedbclient:latest
+          ports:
+            - containerPort: 80
+              name: http
+          imagePullPolicy: Always
