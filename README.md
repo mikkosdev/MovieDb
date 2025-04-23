@@ -2,6 +2,9 @@
 
 This is a demo project for a movie database with a ASP.NET Core C# backend and React+TypeScript frontend.
 
+> [!IMPORTANT]
+> This is work-in-progress. Do not use (yet) for anything.
+
 It has the following features:
 
 - Uses Azure
